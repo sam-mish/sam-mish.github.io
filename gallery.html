@@ -1,0 +1,38 @@
+---
+layout: default
+title: Gallery
+---
+
+<h1>Gallery</h1>
+<p class="section-intro">Every photo in <code>assets/gallery/</code> shows up here automatically — just push an image file, nothing else to edit.</p>
+
+{% assign gallery_files = site.static_files | where_exp: "f", "f.path contains '/assets/gallery/'" %}
+{% assign image_exts = "jpg,jpeg,png,webp" | split: "," %}
+
+<div class="gallery-grid">
+  {% for file in gallery_files %}
+    {% assign ext = file.extname | remove: "." | downcase %}
+    {% if image_exts contains ext %}
+      {% assign photo_id = forloop.index %}
+      <a class="gallery-item" href="#photo-{{ photo_id }}">
+        <img src="{{ file.path | relative_url }}" alt="{{ file.basename }}" loading="lazy">
+      </a>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% if gallery_files.size == 0 %}
+  <p>No photos yet — drop image files into <code>assets/gallery/</code> to get started.</p>
+{% endif %}
+
+<!-- Zero-JS lightbox: each photo gets a full-screen overlay toggled via the URL fragment -->
+{% for file in gallery_files %}
+  {% assign ext = file.extname | remove: "." | downcase %}
+  {% if image_exts contains ext %}
+    {% assign photo_id = forloop.index %}
+    <div class="lightbox" id="photo-{{ photo_id }}">
+      <a class="lightbox__backdrop" href="#" aria-label="Close"></a>
+      <img class="lightbox__img" src="{{ file.path | relative_url }}" alt="{{ file.basename }}">
+    </div>
+  {% endif %}
+{% endfor %}

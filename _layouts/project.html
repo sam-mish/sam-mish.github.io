@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include head.html %}
+</head>
+<body>
+  {% include nav.html %}
+  <main class="wrap page project-page">
+    <a class="back-link" href="{{ '/projects/' | relative_url }}">&larr; All projects</a>
+
+    <header class="project-header">
+      <h1>{{ page.title }}</h1>
+      <p class="project-meta">
+        {% if page.date %}{{ page.date | date: "%B %Y" }}{% endif %}
+        {% if page.tags %} · {{ page.tags | join: " · " }}{% endif %}
+      </p>
+    </header>
+
+    {% if page.image %}
+      <img class="project-hero-img" src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+    {% endif %}
+
+    <div class="project-body">
+      {{ content }}
+    </div>
+
+    {% if page.links %}
+    <div class="project-links">
+      {% for link in page.links %}
+        <a class="btn" href="{{ link.url }}" target="_blank" rel="noopener">{{ link.label }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </main>
+  {% include footer.html %}
+</body>
+</html>

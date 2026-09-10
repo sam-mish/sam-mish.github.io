@@ -1,0 +1,28 @@
+---
+layout: default
+title: Projects
+---
+
+<h1>Projects</h1>
+<p class="section-intro">AI projects I've built, newest first. Each one is added by pushing a single Markdown file — this page updates itself.</p>
+
+<div class="card-grid">
+  {% assign sorted_projects = site.projects | sort: "date" | reverse %}
+  {% for project in sorted_projects %}
+    <a class="card" href="{{ project.url | relative_url }}">
+      {% if project.image %}
+        <img class="card__img" src="{{ project.image | relative_url }}" alt="{{ project.title }}">
+      {% endif %}
+      <div class="card__body">
+        <h2 class="card__title">{{ project.title }}</h2>
+        <p class="card__meta">
+          {% if project.date %}{{ project.date | date: "%B %Y" }}{% endif %}
+          {% if project.tags %} · {{ project.tags | join: " · " }}{% endif %}
+        </p>
+        <p class="card__desc">{{ project.description | default: project.excerpt | strip_html | truncatewords: 22 }}</p>
+      </div>
+    </a>
+  {% else %}
+    <p>No projects yet — add a file to <code>_projects/</code> to get started.</p>
+  {% endfor %}
+</div>
