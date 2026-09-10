@@ -4,9 +4,9 @@ title: About
 ---
 
 <section class="hero">
-  <img class="hero__photo" src="{{ '/assets/img/profile.jpg' | relative_url }}" alt="Your Name">
+  <img class="hero__photo" src="{{ '/assets/img/profile.jpg' | relative_url }}" alt="Samarth Mishra">
   <div class="hero__text">
-    <h1>Your Name</h1>
+    <h1>Samarth Mishra</h1>
     <p class="hero__role">What you do — e.g. Machine Learning Engineer</p>
     <p>
       Write two or three sentences about who you are, what you build, and what
