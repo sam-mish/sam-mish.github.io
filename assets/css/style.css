@@ -122,8 +122,8 @@ code {
   flex-wrap: wrap;
 }
 .hero__photo {
-  width: 480px;
-  height: 660px;
+  width: 320px;
+  height: 440px;
   border-radius: 4px;
   object-fit: cover;
   flex-shrink: 0;
@@ -262,7 +262,7 @@ code {
   .page { padding: 40px 20px; }
   .site-nav a { margin-left: 14px; font-size: 0.85rem; }
   h1 { font-size: 1.6rem; }
-  .hero__photo { width: 100%; height: auto; aspect-ratio: 480 / 660; }
+  .hero__photo { width: 100%; height: auto; aspect-ratio: 320 / 440; }
 }
 
 /* Reduced motion */
