@@ -164,6 +164,12 @@ code {
   display: block;
   background: var(--surface);
 }
+.card__img--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+}
 .card__body { padding: 16px; }
 .card__title { font-size: 1.02rem; font-weight: 600; margin-bottom: 4px; }
 .card__meta { color: var(--muted); font-size: 0.82rem; margin-bottom: 8px; }
